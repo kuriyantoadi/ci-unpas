@@ -31,5 +31,23 @@ Hal yang menjadi menarik
 **4. Float-right**
 <br>Float-right adalah sebuah fungsi di class yang bisa kita pakai untuk memposisikan letak di sebelah kiri.
 - Letak file `application/views/mahasiswa/index.php`
-- Letak syntax `          <a href="<?= base_url(); ?>mahasiswa/hapus/<?= $mhs['id']; ?>" class="badge badge-danger float-right" onclick="return confirm('Yakin?');">Hapus</a>
-`
+
+- Letak syntax `          <a href="<?= base_url(); ?>mahasiswa/hapus/<?= $mhs['id']; ?>" class="badge badge-danger float-right" onclick="return confirm('Yakin?');">Hapus</a>`
+
+**5. Menambahkan style CSS di bootstrap**
+<br>Walau pun tidak sering, tapi saya rasa ini sangat penting ketika kita sedang membuat sebuah project, mengingat sebuah tampilan kadang perlu edit jarak dan sebagainya jadi kita perlu menambahkan sedikit css pada bootstrap kita.
+- Letak file css `assets/css/style.css`
+
+- Di sisipan di file `application/views/template/header.php`
+
+**6. Pencarian Data dengan CodeIgniter**
+<br>Pencarian Data hal yang sangat penting apa lagi untuk sebuah program yang mempunyai data yang sangat banyak.
+- Letak file `application/views/mahasiswa/index.php`
+
+- Letak Syntax `<input type="text" name="keyword" class="form-control" placeholder="Cari Data Mahasiswa" >`.
+- Yang akan dikrim ke Controller `Mahasiswa.php` di dalam syntax `  if ( $this->input->post('keyword')) {
+    $data['mahasiswa'] = $this->Mahasiswa_model->cariDataMahasiswa();
+  }`
+- Lalu diproses di model `application/models/Mahasiswa_model.php` di dalam syntax `        $keyword = $this->input->post('keyword', true);`
+- Syntax `$this->db->like('nama', $keyword);` berfungsi untuk mencari data yang sama dari yang dicari.
+- Syntax `        $this->db->or_like('npm', $keyword);` untuk mencari data dalam kolom database berbeda.
